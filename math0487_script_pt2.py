@@ -28,7 +28,7 @@ for i in range(1, 101):
         sample = data.sample(i)
         meanSample = sample.mean()
         varSample = sample.var()
-
+        
         biasMeanSample = np.append(biasMeanSample, abs(meanSample - meanAlcohol))
         biasVarSample = np.append(biasVarSample, abs(varSample - varAlcohol))
 
@@ -36,15 +36,17 @@ for i in range(1, 101):
         meanSamples = np.append(meanSamples, meanSample)
     
 
-    biasVar = np.append(biasVar, biasVarSample.var())
+    biasVar = np.append(biasVar, biasVarSample.var(ddof=1))
     biasMean = np.append(biasMean, biasMeanSample.mean())
-    varVar = np.append(varVar, varSample.var())
+    varVar = np.append(varVar, varSamples.var())
     varMean = np.append(varMean, meanSamples.var())
 
         
 
 
 figure, axis = plt.subplots(1, 2)
+
+print(varVar)
 
 axis[0].plot(biasMean)
 axis[0].plot(varMean)
