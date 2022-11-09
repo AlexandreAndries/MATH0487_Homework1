@@ -46,8 +46,6 @@ for i in range(1, 101):
 
 figure, axis = plt.subplots(1, 2)
 
-print(varVar)
-
 axis[0].plot(biasMean)
 axis[0].plot(varMean)
 axis[0].set_title("2.1.a")
@@ -59,4 +57,29 @@ axis[1].set_title("2.1.b")
 axis[1].legend(["biais de la variance", "variance de la variance"] , loc = "upper right")
 
 
+plt.show()
+
+varAlcohol = data.var(ddof=1)
+biasVar = np.array([])
+
+varVar = np.array([])
+
+for i in range(1, 101):
+    biasVarSample = np.array([])
+    varSamples = np.array([])
+    for j in range(500):
+        sample = data.sample(i)
+        varSample = sample.var(ddof=1)
+        
+        biasVarSample = np.append(biasVarSample, abs(varSample - varAlcohol))
+        varSamples = np.append(varSamples, varSample)
+    
+
+    biasVar = np.append(biasVar, biasVarSample.var(ddof=1))
+    varVar = np.append(varVar, varSamples.var(ddof=1))
+
+
+plt.plot(biasVar)
+plt.plot(varVar)
+plt.legend(["biais de la variance non biaisé", "variance de la variance non biaisé"] , loc = "upper right")
 plt.show()
