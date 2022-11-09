@@ -57,7 +57,7 @@ def plot_cdf(df, title, xlab):
 def plot_cloud(x, y, title, xlab, ylab):
     fig, axes = plt.subplots(1)
 
-    plt.plot(x,y,'ro')
+    plt.plot(x, y,'ro')
 
     axes.set_title(title)
     axes.set(xlabel=xlab, ylabel=ylab)
@@ -136,3 +136,15 @@ print(rel_df)
 plot_cloud(df['fixed acidity'], df['pH'], 'pH versus fixed acidity - Cloud', 'fixed acidity (g/dm^3)', 'pH (-)')
 plot_cloud(df['fixed acidity'], df['alcohol'], 'alcohol versus fixed acidity - Cloud', 'fixed acidity (g/dm^3)', 'alcohol (vol%)')
 plot_cloud(df['pH'], df['alcohol'], 'alcohol versus pH - Cloud', 'pH (-)', 'alcohol (vol%)')
+
+
+
+# Q2.3 =========================================================================
+
+
+
+
+
+
+
+# FIN ==========================================================================
