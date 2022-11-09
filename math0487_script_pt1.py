@@ -54,7 +54,16 @@ def plot_cdf(df, title, xlab):
     plt.tight_layout()
     plt.show()
 
+def plot_cloud(x, y, title, xlab, ylab):
+    fig, axes = plt.subplots(1)
 
+    plt.plot(x,y,'ro')
+
+    axes.set_title(title)
+    axes.set(xlabel=xlab, ylabel=ylab)
+    axes.set_facecolor('azure')
+    plt.tight_layout()
+    plt.show()
 
 # Q1.1 =========================================================================
 # initialisation de la dataframe (à remplir)
@@ -114,4 +123,16 @@ plot_cdf(fullDF['fixed acidity'],
                'fixed acidity', 'g/dm^3')
 plot_cdf(fullDF['pH'], 'pH', '-')
 plot_cdf(fullDF['alcohol'], 'alcohol', 'vol%')
+
 # Q1.3 =========================================================================
+# comparaison numérique
+df = pd.read_csv('data/math0487_fa22_hw1_data.csv', usecols=var)
+rel_df = df.corr()
+
+# visualisation
+print(rel_df)
+
+# comparaison graphique
+plot_cloud(df['fixed acidity'], df['pH'], 'pH versus fixed acidity - Cloud', 'fixed acidity (g/dm^3)', 'pH (-)')
+plot_cloud(df['fixed acidity'], df['alcohol'], 'alcohol versus fixed acidity - Cloud', 'fixed acidity (g/dm^3)', 'alcohol (vol%)')
+plot_cloud(df['pH'], df['alcohol'], 'alcohol versus pH - Cloud', 'pH (-)', 'alcohol (vol%)')
